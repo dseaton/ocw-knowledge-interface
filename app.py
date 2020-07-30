@@ -38,13 +38,6 @@ def _get_similar_video_clips(input_term, topn=5):
 def _get_similar_words(input_term, topn=12):
     return [w for w, score in model.wv.most_similar(input_term, topn=topn)]
 
-@app.route("/")
-def home():
-    return render_template(
-        "index.html",
-        examples = find_by_examples,
-    )
-
 @app.route("/words/<input_term>")
 def words(input_term="deep_learning"):
     return render_template(
@@ -53,6 +46,19 @@ def words(input_term="deep_learning"):
         examples = find_by_examples, 
         similar_words = _get_similar_words(input_term),
         similar_video_clips = _get_similar_video_clips(input_term)
+    )
+
+@app.route("/")
+def home():
+    return render_template(
+        "index.html",
+        examples = find_by_examples,
+    )
+
+@app.route("/about")
+def about():
+    return render_template(
+        "about.html",
     )
 
 

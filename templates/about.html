@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}OCW Knowledge{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class='wrapper'>
+            <h3>Overview</h3>
+            <p>OpenCourseWare contains content from thousands of courses across all departments
+                at MIT. Organizing information and providing users entrypoints is a consuming
+                task that often requires manual tagging. Word embeddings -- a term from a
+                class of natural language processing (NLP) techiques that encode semantic 
+                meaning in vector representations  -- can provide insight into content, while 
+                providing several convenience features that can be used in experimental interfaces 
+                for users. 
+            </p>
+            <h3>Word embeddings</h3>
+            <p>You can learn more about word embeddings 
+                <a href="https://en.wikipedia.org/wiki/Word_embedding">here</a>. Our model is 
+                built with the popular NLP package gensim using their 
+                <a href="https://radimrehurek.com/gensim/models/doc2vec.html">doc2vec</a> functionality. 
+            </p>
+        </div>
+    </div>
+{% endblock %}
