@@ -2,18 +2,12 @@
 {% block title %}OCW Knowledge{% endblock %}
 {% block content %}
     <div class="container">
-        <div class="jumbotron mt-3">
-        <h1>Bottom Navbar example</h1>
-        <p class="lead">This example is a quick exercise to illustrate how the bottom navbar works.</p>
-        <!-- <a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">View navbar docs &raquo;</a> -->
+        <div class='wrapper text-center'>
+            {% for e in examples %}
+                <a href="/words/{{ e }}" class="btn btn-outline-secondary m-1" role="button">
+                    {{ e }}
+                </a>
+            {% endfor %}
         </div>
-    </div>
-    <div class="container">
-        {% for e in examples %}
-            <button class="btn btn-primary disabled" type="submit" value="Submit">
-                {{ e }} <span class="fa fa-check"></span>
-            </button>
-            
-        {% endfor %}
     </div>
 {% endblock %}
