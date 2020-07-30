@@ -6,7 +6,7 @@ import pandas as pd
 app = Flask(__name__)
 
 model = Doc2Vec.load("data/d2v.model")
-viz_df = pd.read_csv("data/model_viz_df.csv")
+lookup_df = pd.read_csv("data/lookup_df.csv")
 find_by_examples = [
     "deep_learning", "maxwell", "computation", 
     "calculus", "astrophysics", "electromagnetism", 
@@ -19,11 +19,11 @@ def _get_similar_video_clips(input_term, topn=5):
 
     similar_video_clips = []
     for i, score in sim_docs:
-        viz_df.iloc[i]
+        lookup_df.iloc[i]
         similar_video_clips.append([
-            viz_df.iloc[i]['youtube_id'],
-            viz_df.iloc[i]['course_id'],
-            int(viz_df.iloc[i]['id']/1000 * 360)
+            lookup_df.iloc[i]['youtube_id'],
+            lookup_df.iloc[i]['course_id'],
+            lookup_df.iloc[i]['start']
         ])
     return similar_video_clips
 
