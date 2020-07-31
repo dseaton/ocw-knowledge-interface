@@ -31,7 +31,8 @@ def _get_similar_video_clips(input_term, topn=5):
             lookup_df.iloc[i]['youtube_id'],
             lookup_df.iloc[i]['course_num'],
             lookup_df.iloc[i]['course_title'],
-            lookup_df.iloc[i]['start']
+            lookup_df.iloc[i]['start'],
+            lookup_df.iloc[i]['url'],
         ])
     return similar_video_clips
 
