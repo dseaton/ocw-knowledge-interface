@@ -1,22 +1,20 @@
 from flask import Flask, render_template, request, jsonify
+import json
 
 from gensim.models.doc2vec import Doc2Vec
-from gensim.models.phrases import Phraser
 import networkx as nx
 import pandas as pd
 
-import input_terms
 
 app = Flask(__name__)
 
 model = Doc2Vec.load("data/d2v.model")
-bigram_transformer = Phraser.load("data/bigram_transformer_model.pkl")
 lookup_df = pd.read_csv("data/lookup_df.csv")
+with open("input_examples.json", "r") as infile:  
+    input_terms = json.load(infile)
 
-find_by_examples = [input_terms.gensim_custom_preprocess(t) for t in input_terms.find_by_examples]
-find_by_examples = [bigram_transformer[e][0] for e in find_by_examples]
-
-find_by_topic_second_level = [bigram_transformer[input_terms.gensim_custom_preprocess(t)][0] for t in input_terms.find_by_topic_second_level]
+find_by_examples = input_terms["find_by_examples"]
+find_by_topic_second_level = input_terms["find_by_topic_second_level"]
 
 def _get_similar_video_clips(input_term, topn=5):
     sim_docs = model.docvecs.most_similar([model.wv.get_vector(input_term)], topn=topn)
