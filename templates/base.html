@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
 
     <!-- Custom CSS -->
-    <!-- {{ url_for('static', filename='css/style.css') }} -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
     <title>{% block title %}{% endblock %}</title>
   </head>
@@ -45,6 +45,9 @@
             <li class="nav-item dropup">
             <a class="nav-link dropdown-toggle" href="https://getbootstrap.com/" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropup</a>
             <div class="dropdown-menu" aria-labelledby="dropdown10">
+                <a class="dropdown-item" href="/words">Words</a>
+                <a class="dropdown-item" href="/topics">OCW Topics</a>
+                <a class="dropdown-item" href="/network">Network Viz</a>  
                 <a class="dropdown-item" href="https://ocw.mit.edu/">MIT OCW</a>
                 <a class="dropdown-item" href="https://www.youtube.com/user/MIT">OCW YouTube</a>
                 <a class="dropdown-item" href="https://github.com/dseaton/ocw-knowledge-interface">Github</a>

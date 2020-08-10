@@ -1,0 +1,18 @@
+{% from "macros.html" import similarComponent with context %}
+{% extends "base.html" %}
+{% block title %}OCW Knowledge{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="dropdown show">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Find-By-Topic Second Level
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for t in topics %}
+                    <a class="dropdown-item" href="/topics/{{ t }}">{{ t }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {{ similarComponent(input_term, similar_words, similar_video_clips) }}
+{% endblock %}

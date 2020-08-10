@@ -1,3 +1,4 @@
+{% from "macros.html" import similarComponent with context %}
 {% extends "base.html" %}
 {% block title %}OCW Knowledge{% endblock %}
 {% block content %}
@@ -12,65 +13,9 @@
                     <a href="/words/{{ e }}" class="btn btn-outline-secondary m-1" role="button">
                         {{ e }}
                     </a>
-                    <!-- <button type="button" onclick="/words/deep_learning">
-                        {{ e }} <span class="fa fa-check"></span>
-                    </button> -->
                 {% endif %}
             {% endfor %}
         </div>
     </div>
-    <div class="container">
-        <div class="row mt-5">
-            <div class="col-sm-6">
-                <h5>Similar Terms: <span class="text-info"><i>{{ input_term }}</i></span></h5>
-                {% for similar_word in similar_words %}
-                    <div class="card">
-                        <div class="col-md-11">
-                            <div class="card-body">
-                                <p class="float-left">{{ similar_word }}</p>
-                                <p class="float-right text-right">
-                                    <a href="#" class="disabled" data-toggle="tooltip" title="Wikipedia coming soon!">
-                                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="col-sm-6">
-                <h5>Video Clips</h5>
-                {% for similar_video_clip in similar_video_clips %}
-                    <div class="card mt-2">
-                        <div class="row no-gutters">
-                            <div class="col-sm-5">
-                                <iframe width="200" height="130" src="https://www.youtube.com/embed/{{ similar_video_clip[0] }}?start={{ similar_video_clip[3] }}" allowfullscreen></iframe>
-                            </div>
-                            <div class="col-sm-7">
-                                <div class="card-body">
-                                    <h6 class="card-title">{{ similar_video_clip[1] }}: {{ similar_video_clip[2] }}</h6>
-                                    <p class="card-text"><small class="text-muted">Start time ~ {{ similar_video_clip[3] }} sec</small></p>
-                                    <a href="#" class="disabled" data-toggle="tooltip" title="Is relevant...">
-                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="#" class="disabled ml-4" data-toggle="tooltip" title="Not relevant...">
-                                        <i class="fa fa-question-circle-o" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="{{ similar_video_clip[4] }}" class="ml-4" data-toggle="tooltip" title="View transcript" target=”_blank”>
-                                        <i class="fa fa-external-link" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- <p>{{ similar_video_clip[1] }}</p>
-                    <small class="text-muted">Start time ~ {{ similar_video_clip[2] }} sec</small>
-                    <div>
-                        <iframe width="200" height="100" src="https://www.youtube.com/embed/{{ similar_video_clip[0] }}?start={{ similar_video_clip[2] }}" allowfullscreen></iframe>
-                    </div> -->
-                {% endfor %}
-            </div>
-        </div>
-    </div>
+    {{ similarComponent(input_term, similar_words, similar_video_clips) }}
 {% endblock %}
